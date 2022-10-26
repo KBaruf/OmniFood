@@ -65,7 +65,7 @@
   }
   .delivered-meals {
     justify-content: center;
-    padding: 6rem;
+    padding: 6rem 1rem;
     margin-top: 0;
   }
   .featured-logos img {
@@ -224,7 +224,7 @@
     min-height: 20rem;
   }
 }
-/* Below 544px (large Phones) */
+/* Below 544px (All Phones) */
 @media (max-width: 34em) {
   .grid--4-cols,
   .grid--3-cols,
@@ -234,7 +234,12 @@
   }
   .hero {
     padding: 0 3.2rem;
+    justify-content: center;
   }
+  .heading-primary {
+    font-size: 4.8rem;
+  }
+
   .section-hero {
     padding: 2.4rem 0 6.4rem 0;
   }
