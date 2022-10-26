@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/queries.css" />
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/signup.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <title>Sign up || Omnifood</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="./index.html"><img src="./resources/img/omnifood-logo.png" alt="" class="logo" /></a>
+    </header>
+
+    <section class="signup">
+      <div class="signup-container container">
+        <div class="signup-box">
+          <div class="signup-user-text">
+            <h3 class="heading-username">Yes, eating healthy is now easier!</h3>
+            <p>Tasty and hassle-free meals are waiting for you. Signup and enjoy fully-cooked meals prepared by the best chefs in town. Your first meal is on us</p>
+          </div>
+
+          <form class="user-signup--form cta-form" name="sign-up">
+            <div class="signup-userinput">
+              <div>
+                <label for="first-name">First name</label>
+                <input class="user-first-name" id="first-name" type="text" placeholder="John" name="first-name" required />
+              </div>
+              <div>
+                <label for="last-name">Last name</label>
+                <input class="user-last-name" id="last-name" type="text" placeholder="Smith" name="last-name" required />
+              </div>
+
+              <div>
+                <label for="email">Email address</label>
+                <input class="user-email" id="email" type="email" placeholder="me@example.com" name="email" required />
+              </div>
+
+              <div>
+                <label for="select-plan">please Select your Plan</label>
+                <select class="plan" id="select-plan" name="select-plan" required>
+                  <option value="">Please choose one option:</option>
+                  <option value="starter">Starter Plan ($399 per month)</option>
+                  <option value="complete">Complete Plan ($649 per month)</option>
+                </select>
+              </div>
+            </div>
+            <div class="user-address">
+              <div>
+                <label for="street-address">Street Address</label>
+                <input class="street-address" id="street-address" type="text" placeholder="132 My Street" name="street-address" required />
+              </div>
+              <div>
+                <label for="city">City</label>
+                <input class="user-city" id="city" type="text" placeholder="Kingston" name="city" required />
+              </div>
+              <div>
+                <label for="state">State</label>
+                <input class="user-state" id="state" type="text" placeholder="New York" name="state" required />
+              </div>
+
+              <div>
+                <label for="zipcode">Zip Code</label>
+                <input class="user-zipcode" id="zipcode" type="text" placeholder="12401" name="zipcode" required />
+              </div>
+            </div>
+            <div>
+              <label for="password">Password (6 or more Characters)</label>
+              <input class="user-password" id="password" type="password" placeholder="" name="password" required />
+              <span class="pass-error"></span>
+            </div>
+            <button type="submit" id="hide-btn" class="btn btn--form signup-form-btn">Sign up</button>
+            <div class="loading"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="./javascript/views/mainSignup.js"></script>
+  </body>
+</html>

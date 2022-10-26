@@ -1,0 +1,342 @@
+/*Start Media Queries */
+/*  */
+/*  Below 1360xp (Desktops) */
+@media (max-width: 85em) {
+  .hero {
+    max-width: 130rem;
+  }
+  .nav-mobile-btn {
+    display: none;
+  }
+  .meal-approved-container {
+    width: 65rem;
+    margin-bottom: 30rem;
+  }
+}
+
+/* Below 1200px (small laptops) */
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+  .heading-primary {
+    font-size: 5.2rem;
+  }
+  .heading-secondary {
+    font-size: 4.4rem;
+  }
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+  /* .header {
+    padding: 0 3.2rem;
+  } */
+  .nav-menu {
+    gap: 3.2rem;
+  }
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+  .nav-mobile-btn {
+    display: none;
+  }
+  .meal-approved-container {
+    width: 65rem;
+    margin-bottom: 40rem;
+  }
+  .change-plan--user {
+    right: 13rem;
+  }
+}
+
+/* Below 944px (Tablets) */
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 0 6rem;
+  }
+  .hero-img {
+    width: 60%;
+  }
+  .delivered-meals {
+    justify-content: center;
+    padding: 6rem;
+    margin-top: 0;
+  }
+  .featured-logos img {
+    height: 2.8rem;
+  }
+  .step-number {
+    font-size: 7.4rem;
+  }
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.4rem;
+  }
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .gallery-item img {
+    width: 100%;
+  }
+  .cta {
+    grid-template-columns: 3fr 2fr;
+  }
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+  .btn--form {
+    margin-top: 2.4rem;
+  }
+  .icon-mobile-nav[name='close-outline'] {
+    display: none;
+  }
+  /* show Mobile-Nav Button */
+  .nav-mobile-btn {
+    visibility: visible;
+    display: block;
+  }
+  .nav-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.8rem;
+    font-size: 3rem;
+    transition: all 0.5s;
+    /* transform: translateX(0); */
+    overflow-x: hidden;
+  }
+  .nav-signup-btn:link,
+  .nav-signup-btn:visited {
+    font-size: 3rem;
+  }
+  .nav-login:link,
+  .nav-login:visited {
+    font-size: 3rem;
+  }
+  .hide-nav .close-nav-modal {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    /* transform: translateX(100%); */
+  }
+  .toggle-menu-icons .icon-mobile-nav[name='close-outline'] {
+    display: block;
+    visibility: visible;
+  }
+  .toggle-menu-icons .icon-mobile-nav[name='menu-outline'] {
+    display: none;
+    visibility: hidden;
+  }
+  .section-meals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .meal-approved-container {
+    width: 65rem;
+    margin-bottom: 30rem;
+  }
+  /* show meal Plan Container */
+  .meal-plan-content {
+    max-width: 50%;
+    max-height: 40%;
+    min-height: 18rem;
+    width: 40rem;
+    top: -20%;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+  }
+  .change-plan--user {
+    max-width: 50%;
+    max-height: 30%;
+    min-height: 20rem;
+    z-index: 100;
+    top: 0;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 11px;
+    box-shadow: 0 6.4rem 6.4rem rgba(0, 0, 0, 0.2);
+    padding: 1rem 2.8rem 7rem 2.8rem;
+  }
+}
+/* Below 704px (small tablets) */
+@media (max-width: 44em) {
+  html {
+    font-size: 43.75%;
+  }
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diets {
+    grid-column: 1/ -1;
+    justify-self: center;
+  }
+  .testimonials-container {
+    padding: 4rem;
+  }
+  .pricing-plan {
+    width: 100%;
+  }
+  .section-cta {
+    padding: 0rem;
+  }
+  .grid--footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+  .featured-logos img {
+    height: 2.4rem;
+  }
+  .meal-approved-container {
+    font-size: 2.6rem;
+    margin: 0 auto;
+    width: 65rem;
+    margin-bottom: 10rem;
+    text-align: center;
+  }
+  .meal-plan-content {
+    min-height: 20rem;
+  }
+}
+/* Below 544px (large Phones) */
+@media (max-width: 34em) {
+  .grid--4-cols,
+  .grid--3-cols,
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero {
+    padding: 0 3.2rem;
+  }
+  .section-hero {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+  .hero-img {
+    width: 80%;
+  }
+  .section-how {
+    margin: 1.2rem 0;
+    padding: 0;
+  }
+  .step-img-box,
+  .step-text-box {
+    margin: 1rem 3rem;
+  }
+  .section-meals {
+    padding: 3rem 0;
+  }
+  .featured-logos img {
+    height: 1.4rem;
+  }
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .cta {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+  .cta-text-box {
+    padding: 3.2rem;
+  }
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.2rem 3.2rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+  /* Login Queries */
+  .login-container {
+    width: 44rem;
+    height: 74rem;
+  }
+  .login-form {
+    grid-template-columns: 1fr;
+  }
+  .section-meals {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .container {
+    width: 90%;
+    padding-top: 0;
+  }
+  .heading-tertiary {
+    padding-bottom: 0rem;
+  }
+  .generate-meals {
+    align-self: center;
+  }
+  .all-recipes {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .loading-meals {
+    padding-bottom: 2rem;
+  }
+  .approve-mealplan {
+    background-color: #fae7d6;
+    padding: 0 0.5rem 1rem;
+    border-radius: 11px;
+    align-content: center;
+  }
+  .approve-mealplan p {
+    font-size: 2.1rem;
+  }
+  .meal-approved-container {
+    font-size: 2.1rem;
+    margin: 0 auto;
+    width: 50rem;
+    margin-bottom: 10rem;
+    text-align: center;
+  }
+  .meal-plan-content {
+    width: 80%;
+    top: 0;
+    min-height: 22rem;
+    margin: 0;
+    padding: 0.5rem;
+  }
+  .change-plan--user {
+    min-width: 70%;
+    max-height: 50%;
+  }
+}
+/*End Media Queries */

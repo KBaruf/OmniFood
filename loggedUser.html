@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/loggedUser.css" />
+    <link rel="stylesheet" href="./css/queries.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <title>Logged In || Omnifood</title>
+  </head>
+  <body>
+    <header class="header user-account--header">
+      <a href="./loggedUser.html"><img src="./resources/img/omnifood-logo.png" alt="" class="logo" /></a>
+      <div class="nav-main-container">
+        <nav class="nav hide-nav">
+          <div class="meal-dynamic">
+            <!-- <div class="meal-plan-content">
+            <p class="meal-plan-title">You are a Valued Starter Plan member:</p>
+            <ul>
+              <li>1 meal per day</li>
+              <li>You may Order between 11am and 9pm</li>
+              <li>Enjoy Free Delivery</li>
+            </ul>
+          </div> -->
+          </div>
+          <ul class="close-nav-modal nav-menu">
+            <li><a href="#" class="nav-links meal-plan-btn">Membership</a></li>
+            <li><a href="#" class="nav-links change-plan-btn">Change Plan</a></li>
+            <li><a href="#" class="nav-links account-plan-btn">Account</a></li>
+            <li><a href="http://localhost:5500/index.html" class="logout login-btn nav-login">Logout</a></li>
+          </ul>
+        </nav>
+        <button class="nav-mobile-btn"><ion-icon name="close-outline" class="close-btn icon-mobile-nav"></ion-icon><ion-icon class="open-menu icon-mobile-nav" name="menu-outline"></ion-icon></button>
+      </div>
+    </header>
+    <!-- Change Plan -->
+
+    <aside class="change-plan toggle-change-plan">
+      <section class="change-plan--user">
+        <form class="change-plan-form" name="sign-in">
+          <div>
+            <label for="select-plan">please Select a new Plan</label>
+            <select class="plan" id="select-plan" name="select-plan" required>
+              <option value="">Please choose one option:</option>
+              <option value="starter">Starter Plan ($399 per month)</option>
+              <option value="complete">Complete Plan ($649 per month)</option>
+            </select>
+            <div class="change-plan-error"></div>
+            <div class="change-plan-success"></div>
+          </div>
+          <button id="hide-btn" class="btn btn-login btn--form" type="submit">Submit Changes</button>
+
+          <div class="loading loading-signup"></div>
+        </form>
+      </section>
+    </aside>
+
+    <div class="loading-meals">
+      <main class="auth-user-acc section-meals">
+        <!-- <div class="container">
+        <h3 class="heading-greeting">Hello Baruf,</h3>
+        <p class="plan-description">As a reminder, your starter-plan includes the following:</p>
+        <div class="list-plan">
+          <ul>
+            <li>1 meal per day</li>
+            <li>Order between 11am and 9pm</li>
+            <li>Free Delivery</li>
+          </ul>
+        </div>
+        <p class="hero-description"><strong>Omnifood AI</strong> has generated the following weekly meal plan for you. You have an option to generate your own meal plan. Just do it within <strong> 24 hours.</strong></p>
+      </div>
+
+      <div class="container grid grid--3-cols margin-bottom-md">
+        <div class="get-meals meal">
+          <div class="center-text"><h3 class="heading-tertiary">Monday</h3></div>
+          <img src="resources/img/meals/meal-1.jpg" class="meal-img" alt="Japanese Gyozas" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegetarian">Vegetarian</span>
+            </div>
+            <p class="meal-title">Japanese Gyozas</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>650</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>74</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.9</strong> rating (537)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Tuesday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+              <span class="tag tag--paleo">Paleo</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Wednesday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+              <span class="tag tag--paleo">Paleo</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Thursday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Friday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+              <span class="tag tag--paleo">Paleo</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Saturday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+              <span class="tag tag--paleo">Paleo</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="meal">
+          <div class="center-text"><h3 class="heading-tertiary">Sunday</h3></div>
+          <img src="resources/img/meals/meal-2.jpg" class="meal-img" alt="Avocado Salad" />
+          <div class="meal-content">
+            <div class="meal-tags">
+              <span class="tag tag--vegan">Vegan</span>
+              <span class="tag tag--paleo">Paleo</span>
+            </div>
+            <p class="meal-title">Avocado Salad</p>
+            <ul class="meal-attributes">
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <span><strong>400</strong> calories</span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                <span>NutriScore &reg; <strong>92</strong></span>
+              </li>
+              <li class="meal-attribute">
+                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <span><strong>4.8</strong> rating (441)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container all-recipes">
+        <button type="submit" id="hide-btn" class="generate-meals btn btn--form">Generate a new Meal Plan</button>
+      </div> -->
+      </main>
+      <div class="meals-loading--text">Loading Meals...</div>
+      <section class="dynamic-footer">
+        <div class="meal-approved">
+          <div class="meal-approved-container">
+            <p>Your Meal-Plan has been saved. Please Watch out for an Email from Omnifood Team</p>
+          </div>
+        </div>
+        <div class="container all-recipes">
+          <button type="submit" id="hide-btn" class="generate-meals btn btn--form signup-form-btn">Generate a new Meal Plan</button>
+
+          <div class="approve-mealplan">
+            <p>Approve Meal-Plan</p>
+            <span class="approval-icon"><ion-icon name="thumbs-up-outline"></ion-icon></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="./javascript/views/loggedUser.js"></script>
+  </body>
+</html>
