@@ -275,7 +275,10 @@
     grid-row: 1;
   }
   .cta-text-box {
-    padding: 3.2rem;
+    padding: 1rem 3.2rem;
+  }
+  .cta-form {
+    row-gap: 0;
   }
   .btn,
   .btn:link,
@@ -299,7 +302,7 @@
     padding: 0;
   }
   .container {
-    width: 90%;
+    width: 100%;
     padding-top: 0;
   }
   .heading-tertiary {
