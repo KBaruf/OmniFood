@@ -19,6 +19,7 @@ class HomepageSignup {
     this._mobileMenuHandler();
     this._hidesignUpBtn();
     this._closeModalWhenSrolling();
+    this._allLinksEventListener();
   }
   _getUserIP = async function () {
     const getUserIP = await fetch('https://api.ipify.org/');
@@ -29,9 +30,14 @@ class HomepageSignup {
     const header = document.querySelector('.header');
     const sectionHero = document.querySelector('.section-hero');
     window.addEventListener('scroll', () => {
-      const secHero = sectionHero.getBoundingClientRect();
-      if (secHero.top < -842) header.classList.add('sticky-header');
-      if (secHero.top > -842) header.classList.remove('sticky-header');
+      const secHero = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) {
+          header.classList.add('sticky-header');
+        } else {
+          header.classList.remove('sticky-header');
+        }
+      });
+      secHero.observe(sectionHero);
     });
   }
   _getQuery() {
@@ -106,7 +112,7 @@ class HomepageSignup {
 
           this._getUserIP();
           setTimeout(() => {
-            window.location.href = 'http://127.0.0.1:5500/signup.html';
+            window.location.href = '/signup.html';
           }, 200);
         } else {
           return;
@@ -140,6 +146,22 @@ class HomepageSignup {
         this._navMenuBtn.classList.remove('toggle-menu-icons');
       }.bind(this)
     );
+  }
+  _allLinksEventListener() {
+    const links = document.getElementsByTagName('a:href');
+    // const linkattribute = links.getAttribute('id');
+    const allLinks = document.getElementById('linkattribute');
+
+    links.foreach((link) => {
+      const linkAttribute = link.getAttribute('id');
+      const allLinks = document.getElementById(linkAttribute);
+      allLinks.addEventListener(
+        'click',
+        function () {
+          console.log(linkAttribute);
+        }.bind(this)
+      );
+    });
   }
 }
 export default new HomepageSignup();
