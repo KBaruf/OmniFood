@@ -203,7 +203,7 @@ export const loggedUser = async function () {
     approvalContainer.addEventListener('click', () => {
       document.querySelector('.meal-approved').classList.add('show-plan-modal');
       setTimeout(() => {
-        window.location.href = 'http://localhost:5500/index.html';
+        window.location.href = '/index.html';
       }, 3600);
     });
   };
