@@ -148,20 +148,30 @@ class HomepageSignup {
     );
   }
   _allLinksEventListener() {
-    const links = document.getElementsByTagName('a:href');
-    // const linkattribute = links.getAttribute('id');
-    const allLinks = document.getElementById('linkattribute');
+    const links = document.querySelectorAll('a:link');
 
-    links.foreach((link) => {
-      const linkAttribute = link.getAttribute('id');
-      const allLinks = document.getElementById(linkAttribute);
-      allLinks.addEventListener(
+    links.forEach((link) => {
+      link.addEventListener(
         'click',
-        function () {
-          console.log(linkAttribute);
+        function (event) {
+          // event.preventDefault();
+          const href = link.getAttribute('href');
+          if (href === '#')
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          if (href !== '#' && href.startsWith('#')) {
+            const allLinks = document.querySelector(href);
+            allLinks.scrollIntoView({
+              behavior: 'smooth',
+            });
+          }
         }.bind(this)
       );
     });
+
+    // const navSignUpButton = document.querySelector('.nav-signup-btn');
   }
 }
 export default new HomepageSignup();
