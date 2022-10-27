@@ -115,7 +115,7 @@ class Login {
           if (response.registered === true && response.idToken) {
             this._loginSuccess();
             setTimeout(async () => {
-              window.location.href = 'http://localhost:5500/loggedUser.html';
+              window.location.href = '/loggedUser.html';
               this._formBox.classList.remove('load-spinner');
             }, 1800);
           }
