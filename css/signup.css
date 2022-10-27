@@ -12,6 +12,12 @@
   line-height: 1.8;
   margin-bottom: 4.8rem;
 }
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.8rem;
+}
 .signup-user-text p {
   padding-top: 1rem;
   font-size: 2rem;
