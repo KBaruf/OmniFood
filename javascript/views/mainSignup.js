@@ -167,7 +167,7 @@ class mainSignup {
     };
     signUp();
     setTimeout(() => {
-      window.location.href = 'http://127.0.0.1:5500/loggedUser.html#';
+      window.location.href = '/loggedUser.html';
     }, 1000);
   }
 }
