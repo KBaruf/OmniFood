@@ -41,6 +41,9 @@ class mainSignup {
     this._userIP = userIP;
   };
   _getQuery() {
+    const firstName = this._firstName.value;
+    const lastName = this._lastName.value;
+    const email = this._userEmail.value;
     const mealPlan = this._mealPlan.value;
     const userStreetAddress = this._userStreetAddress.value;
     const userCity = this._userCity.value;
@@ -49,9 +52,9 @@ class mainSignup {
     const userPass = this._userPass.value;
 
     return (this._completeUserSignupDet = {
-      firstName: this._userDetailsfromHomepage.firstName,
-      lastName: this._userDetailsfromHomepage.lastName,
-      email: this._userDetailsfromHomepage.email,
+      firstName: !this._userDetailsfromHomepage.firstName ? firstName : this._userDetailsfromHomepage.firstName,
+      lastName: !this._userDetailsfromHomepage.lastName ? lastName : this._userDetailsfromHomepage.lastName,
+      email: !this._userDetailsfromHomepage.email ? email : this._userDetailsfromHomepage.email,
       mealPlan,
       userStreetAddress,
       userCity,

@@ -180,6 +180,7 @@ export const loggedUser = async function () {
     let weeklyMeals = shuffleMeals.slice(0, 7);
     authUser.innerHTML = '';
     mealDisplaymarkup(weeklyMeals);
+    window.scrollTo({ top: 0 });
   });
   // =======================
 
