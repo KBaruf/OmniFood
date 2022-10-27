@@ -280,6 +280,10 @@
   .cta-form {
     row-gap: 0;
   }
+  .user-signup--form {
+    display: grid;
+    row-gap: 2.4rem;
+  }
   .btn,
   .btn:link,
   .btn:visited {
@@ -292,7 +296,7 @@
   /* Login Queries */
   .login-container {
     width: 44rem;
-    height: 74rem;
+    height: 70rem;
   }
   .login-form {
     grid-template-columns: 1fr;
