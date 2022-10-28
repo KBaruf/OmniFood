@@ -92,6 +92,9 @@
   background-color: #45260a;
   border-radius: 50%;
 }
+.approval-icon {
+  margin: 0 auto;
+}
 .approval-icon:hover,
 .approval-icon:active {
   color: #a9e34b;

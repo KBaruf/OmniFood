@@ -20,6 +20,7 @@ class HomepageSignup {
     this._hidesignUpBtn();
     this._closeModalWhenSrolling();
     this._allLinksEventListener();
+    this._setDynamicYear();
   }
   _getUserIP = async function () {
     const getUserIP = await fetch('https://api.ipify.org/');
@@ -170,8 +171,11 @@ class HomepageSignup {
         }.bind(this)
       );
     });
-
-    // const navSignUpButton = document.querySelector('.nav-signup-btn');
+  }
+  _setDynamicYear() {
+    const date = new Date();
+    const year = date.getFullYear();
+    document.querySelector('.year').textContent = year;
   }
 }
 export default new HomepageSignup();

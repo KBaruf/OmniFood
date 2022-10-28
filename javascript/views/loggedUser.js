@@ -28,7 +28,6 @@ export const loggedUser = async function () {
     randomNumbers.push(Math.floor(Math.random() * 30) + 1);
   }
   // =================================================================
-  console.log(userDet);
   //  Fetch meals from TheMealDB API====================
   const fetchMealsDisplay = async () => {
     const fetchMultipleCat = async (seafood, pork, american, pasta) => {
