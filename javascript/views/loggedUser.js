@@ -94,7 +94,7 @@ export const loggedUser = async function () {
   // =====================Display meals Dynamically====================
   const mealsHeaderDisplay = () => {
     const nonDynamiheader = `<div class="container">
-    <h3 class="heading-greeting">Hello ${userDet.firstName},</h3>
+    <h3 class="heading-greeting">Hello,</h3>
     ${
       /*userDet.mealPlan === 'starter' ? starterMembership : completeMembership
        */ ''
