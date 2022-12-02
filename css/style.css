@@ -760,3 +760,7 @@ body {
   right: 0;
   margin: auto;
 }
+
+.test-account {
+  font-size: 1.4rem;
+}
