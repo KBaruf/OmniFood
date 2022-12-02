@@ -6,7 +6,7 @@ export const loggedUser = async function () {
   const loadMealContainer = document.querySelector('.loading-meals');
   const loadingText = document.querySelector('.meals-loading--text');
   const navMenuBtn = document.querySelector('.nav-mobile-btn');
-  // const hideMeal = document.querySelector('.hide-mealPlan');
+  const mealsGeneratedModal = document.querySelector('.new-meals-gen');
 
   const userAuthData = await login._accessAuthenticatedUserData();
 
@@ -16,8 +16,8 @@ export const loggedUser = async function () {
 
   let fetchedResponseData = [];
 
-  const weekDays = ['Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday'];
-  // const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  // const weekDays = ['Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday'];
+  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   if (!authUser) return;
   authUser.innerHTML = '';
@@ -34,7 +34,7 @@ export const loggedUser = async function () {
       // seafood
       const seafoodData = await fetch(seafood);
       const seafoodResponse = await seafoodData.json();
-      fetchedResponseData.push(seafoodResponse);
+      fetchedResponseData.push({ ...seafoodResponse });
       // pork
       const porkData = await fetch(pork);
       const porkResponse = await porkData.json();
@@ -61,7 +61,6 @@ export const loggedUser = async function () {
     const americanUrl = 'https://themealdb.com/api/json/v1/1/filter.php?a=American';
     const pastaUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Pasta';
     await fetchMultipleCat(seafoodUrl, porkUrl, americanUrl, pastaUrl);
-    console.log(fetchedResponseData);
   };
 
   await fetchMealsDisplay();
@@ -106,17 +105,15 @@ export const loggedUser = async function () {
   mealsHeaderDisplay();
 
   const mealDisplaymarkup = (randomMeals) => {
+    const week = weekDays.map((day) => day);
+    const day = new Date();
+    const todayIs = day.getDay();
     randomMeals.map((meal, index) => {
-      let mealIndex = [index];
-      const weekDay = mealIndex.sort();
-      const day = new Date();
-      const todayIs = day.getDay() + 1;
-
       const mealsMarkup = ` 
       <div class="container">
       <div class="container container-display ">
         <div class="get-meals meal">
-          <div class="center-text"><h3 class="heading-tertiary">${weekDays[weekDay]}</h3></div>
+          <div class="center-text"><h3 class="heading-tertiary">${week[weekDays.length - index - 1]}</h3></div>
            <img src=${meal.strMealThumb} alt="${meal.strMeal}" />
           <div class="meal-content-container">
             <p class="meal-title">${meal.strMeal}</p>
@@ -131,9 +128,8 @@ export const loggedUser = async function () {
         </div>
         </div>`;
       authUser.insertAdjacentHTML('afterbegin', mealsMarkup);
-
-      weekDay.find((weekday) => {
-        if (weekday === todayIs)
+      [week[weekDays.length - index]].find((weekday) => {
+        if (weekday === weekDays[todayIs])
           document.querySelector('.heading-tertiary').insertAdjacentHTML(
             'beforeend',
             ` <div class=" center-day meal-tags">
@@ -147,9 +143,20 @@ export const loggedUser = async function () {
     loadingText.style.visibility = 'hidden';
   };
 
+  const combineAllMeals = () => {
+    let fetchedResponseAllData = [];
+    fetchedResponseAllData.push(...fetchedResponseData[0].meals);
+    fetchedResponseAllData.push(...fetchedResponseData[1].meals);
+    // fetchedResponseAllData.push(...fetchedResponseData[2].meals);
+    fetchedResponseAllData.push(...fetchedResponseData[3].meals);
+    return fetchedResponseAllData;
+  };
+
   const mealsDisplay = () => {
     // const weeklyMeals = fetchedResponseData[0].meals.slice(0, 7);
-    const shuffleMeals = fetchedResponseData[0].meals.sort(() => 0.5 - Math.random());
+    const allFetchedMeals = combineAllMeals();
+
+    const shuffleMeals = Object.values(allFetchedMeals).sort(() => 0.5 - Math.random());
     let weeklyMeals = shuffleMeals.slice(0, 7);
 
     mealDisplaymarkup(weeklyMeals);
@@ -175,11 +182,23 @@ export const loggedUser = async function () {
   // Generate Random Meals
 
   generateBtn.addEventListener('click', () => {
-    const shuffleMeals = fetchedResponseData[0].meals.sort(() => 0.5 - Math.random());
+    const allFetchedMeals = combineAllMeals();
+    const shuffleMeals = Object.values(allFetchedMeals).sort(() => 0.5 - Math.random());
     let weeklyMeals = shuffleMeals.slice(0, 7);
     authUser.innerHTML = '';
     mealDisplaymarkup(weeklyMeals);
     window.scrollTo({ top: 0 });
+
+    mealsGeneratedModal.style.cssText = `
+      visibility: visible;
+      display: flex;
+    `;
+    setTimeout(() => {
+      mealsGeneratedModal.style.cssText = `
+      visibility: hidden;
+      display: none;
+      transition: 0.6s;`;
+    }, 2000);
   });
   // =======================
 
