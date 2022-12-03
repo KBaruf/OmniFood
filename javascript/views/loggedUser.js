@@ -249,7 +249,7 @@ export const loggedUser = async function () {
 
   const mobileMenuHandler = () => {
     const hideMeal = document.querySelector('.hide-mealPlan');
-    const closeallModal = document.querySelector('.close-nav-modal');
+    // close all open modals when icon clicked
     navMenuBtn.addEventListener('click', function () {
       document.querySelector('.nav').classList.toggle('hide-nav');
       navMenuBtn.classList.toggle('toggle-menu-icons');
