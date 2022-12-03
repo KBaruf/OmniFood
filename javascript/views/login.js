@@ -92,7 +92,7 @@ class Login {
             },
           });
           const response = await userData.json();
-
+          // console.log(response);
           this._generateUserID();
 
           if (response.error && !response.ok) {
@@ -110,7 +110,8 @@ class Login {
             }
             return;
           }
-
+          // push to local storeage before clearing input
+          localStorage.setItem('email', `${this._userEmail.value}`);
           this._clearInput();
           if (response.registered === true && response.idToken) {
             this._loginSuccess();
@@ -130,7 +131,6 @@ class Login {
     const lastname = this._lastName.value.trim().toLowerCase();
     const email = this._userEmail.value.trim().toLowerCase().slice(0, 5);
 
-    console.log(firstname, lastname, email);
     return (this._userUniqueId = `${firstname}${lastname}${email}`);
   }
 

@@ -1,22 +1,30 @@
 import login from './login.js';
 export const loggedUser = async function () {
   const authUser = document.querySelector('.auth-user-acc');
+  const logout = document.querySelector('.logout');
   const generateBtn = document.querySelector('.generate-meals');
   const mealplanMemberBtn = document.querySelector('.meal-plan-btn');
   const loadMealContainer = document.querySelector('.loading-meals');
   const loadingText = document.querySelector('.meals-loading--text');
   const navMenuBtn = document.querySelector('.nav-mobile-btn');
   const mealsGeneratedModal = document.querySelector('.new-meals-gen');
-
   const userAuthData = await login._accessAuthenticatedUserData();
-
-  const getUserDet = Object.values(userAuthData);
-
-  const userDet = getUserDet[0];
-
+  const loggedUserData = [];
   let fetchedResponseData = [];
 
-  // const weekDays = ['Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday'];
+  // get fetched data after login success
+  const getUserDet = Object.values(userAuthData);
+
+  // temporary store user email to greet user
+  const loggedUserEmail = localStorage.getItem('email');
+  getUserDet.find((user) => {
+    if (loggedUserEmail === user.email) loggedUserData.push(user);
+    setTimeout(() => {
+      localStorage.removeItem('email');
+    }, 3000 * 100);
+  });
+  const userDet = loggedUserData[0];
+
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   if (!authUser) return;
@@ -93,7 +101,7 @@ export const loggedUser = async function () {
   // =====================Display meals Dynamically====================
   const mealsHeaderDisplay = () => {
     const nonDynamiheader = `<div class="container">
-    <h3 class="heading-greeting">Hello,</h3>
+    <h3 class="heading-greeting">Hello ${userDet?.firstName || ''},</h3>
     ${
       /*userDet.mealPlan === 'starter' ? starterMembership : completeMembership
        */ ''
@@ -168,7 +176,7 @@ export const loggedUser = async function () {
         'afterbegin',
         `<div class="hide-mealPlan meal-plan">
         <div class="meal-plan-content">
-              <p class="meal-plan-title">You are a ${userDet.mealPlan === 'starter' ? 'Starter-Plan' : 'Complete-Plan'} Member 🎉:</p>
+              <p class="meal-plan-title">You are a ${userDet?.mealPlan === 'starter' ? 'Starter-Plan' : 'Complete-Plan'} Member 🎉:</p>
               ${userDet.mealPlan === 'starter' ? `${starterDesc}` : `${completeDesc}`}
               </div>
               </div>`
@@ -283,12 +291,13 @@ export const loggedUser = async function () {
           selectedPlan.value = '';
         }, 2000);
       }
-      console.log(userDet);
     });
     loadMealContainer.addEventListener('click', () => {
       document.querySelector('.change-plan').classList.add('toggle-change-plan');
     });
   };
   changePlan();
+  // clear local storage on logout
+  logout.addEventListener('click', () => localStorage.removeItem('email'));
 };
 loggedUser();

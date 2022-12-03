@@ -60,7 +60,6 @@ class mainSignup {
       userCity,
       userState,
       userZipcode,
-      userPass,
       userId: this._userUniqueId,
     });
   }
@@ -148,6 +147,7 @@ class mainSignup {
         method: 'POST',
         body: JSON.stringify({
           email: this._userEmail.value,
+          name: this._firstName.value,
           password: this._userPass.value,
           returnSecureToken: true,
         }),
@@ -157,7 +157,7 @@ class mainSignup {
       });
 
       const response = await userData.json();
-      console.log(response);
+      // console.log(response);
 
       if (!response.ok) {
         if (response.error.message === 'EMAIL_EXISTS') {
