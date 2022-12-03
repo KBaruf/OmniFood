@@ -8,21 +8,30 @@ export const loggedUser = async function () {
   const loadingText = document.querySelector('.meals-loading--text');
   const navMenuBtn = document.querySelector('.nav-mobile-btn');
   const mealsGeneratedModal = document.querySelector('.new-meals-gen');
+  // logged user account
+  const loggedUser = document.querySelector('.logged_user');
+  const loggedUserFirstName = document.querySelector('.logged_user_first');
+  const loggedUserLastName = document.querySelector('.logged_user_last');
+  const loggedUserEmail = document.querySelector('.logged_user_email');
+  const loggedUserPassword = document.querySelector('.logged_user_password');
+
   const userAuthData = await login._accessAuthenticatedUserData();
   const loggedUserData = [];
+
   let fetchedResponseData = [];
 
   // get fetched data after login success
   const getUserDet = Object.values(userAuthData);
 
   // temporary store user email to greet user
-  const loggedUserEmail = localStorage.getItem('email');
+  const StoreLoggedUser = localStorage.getItem('email');
   getUserDet.find((user) => {
-    if (loggedUserEmail === user.email) loggedUserData.push(user);
+    if (StoreLoggedUser === user.email) loggedUserData.push(user);
     setTimeout(() => {
       localStorage.removeItem('email');
-    }, 3000 * 100);
+    }, 600 * 1000);
   });
+
   const userDet = loggedUserData[0];
 
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -177,7 +186,7 @@ export const loggedUser = async function () {
         `<div class="hide-mealPlan meal-plan">
         <div class="meal-plan-content">
               <p class="meal-plan-title">You are a ${userDet?.mealPlan === 'starter' ? 'Starter-Plan' : 'Complete-Plan'} Member 🎉:</p>
-              ${userDet.mealPlan === 'starter' ? `${starterDesc}` : `${completeDesc}`}
+              ${userDet?.mealPlan === 'starter' ? `${starterDesc}` : `${completeDesc}`}
               </div>
               </div>`
       );
@@ -216,7 +225,9 @@ export const loggedUser = async function () {
     mealplanMemberBtn.addEventListener('click', () => {
       hideMeal.classList.toggle('meal-plan');
       document.querySelector('.change-plan').classList.add('toggle-change-plan');
+      loggedUser.classList.remove('toggle_logged_user');
     });
+    // hide plan modal when container is clicked
     loadMealContainer.addEventListener('click', () => {
       hideMeal.classList.add('meal-plan');
     });
@@ -243,6 +254,7 @@ export const loggedUser = async function () {
       document.querySelector('.nav').classList.toggle('hide-nav');
       navMenuBtn.classList.toggle('toggle-menu-icons');
       hideMeal.classList.add('meal-plan');
+      loggedUser.classList.remove('toggle_logged_user');
       document.querySelector('.change-plan').classList.add('toggle-change-plan');
     });
   };
@@ -258,6 +270,7 @@ export const loggedUser = async function () {
     changePlanBtn.addEventListener('click', () => {
       changePlan.classList.toggle('toggle-change-plan');
       document.querySelector('.hide-mealPlan').classList.add('meal-plan');
+      loggedUser.classList.remove('toggle_logged_user');
     });
     // Start of Change Meal Plan in the Database
     const putMealPlanrequest = async () => {
@@ -273,6 +286,10 @@ export const loggedUser = async function () {
     // End of Change meal Plan in the Database
     submitPlan.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (!userDet) {
+        errorMessage.textContent = 'Error!! Please logout then login';
+        return;
+      }
       if (userDet.mealPlan === selectedPlan.value) {
         errorMessage.textContent = `You are already a ${userDet.mealPlan}-Plan Member`;
         setTimeout(() => {
@@ -292,6 +309,7 @@ export const loggedUser = async function () {
         }, 2000);
       }
     });
+    // hide change plan modal when container is clicked
     loadMealContainer.addEventListener('click', () => {
       document.querySelector('.change-plan').classList.add('toggle-change-plan');
     });
@@ -299,5 +317,30 @@ export const loggedUser = async function () {
   changePlan();
   // clear local storage on logout
   logout.addEventListener('click', () => localStorage.removeItem('email'));
+
+  // Display user account information modal
+  const loggedUserAccount = () => {
+    if (!userDet) {
+      console.log(userDet);
+      loggedUser.classList.remove('toggle_logged_user');
+      return;
+    }
+
+    document.querySelector('.account-plan-btn').addEventListener('click', () => {
+      loggedUser.classList.toggle('toggle_logged_user');
+      // hide other modals when account menu is clicked
+      document.querySelector('.change-plan').classList.add('toggle-change-plan');
+      document.querySelector('.hide-mealPlan').classList.add('meal-plan');
+
+      // hide account modal when container is clicked
+      loadMealContainer.addEventListener('click', () => {
+        loggedUser.classList.remove('toggle_logged_user');
+      });
+    });
+    loggedUserFirstName.value = userDet?.firstName;
+    loggedUserLastName.value = userDet?.lastName;
+    loggedUserEmail.value = userDet?.email;
+  };
+  loggedUserAccount();
 };
 loggedUser();

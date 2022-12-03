@@ -12,6 +12,9 @@
     width: 65rem;
     margin-bottom: 30rem;
   }
+  .logged-user_container {
+    right: 2rem;
+  }
 }
 
 /* Below 1200px (small laptops) */
@@ -164,6 +167,20 @@
     max-width: 50%;
     max-height: 30%;
     min-height: 20rem;
+    z-index: 100;
+    top: 0;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 11px;
+    box-shadow: 0 6.4rem 6.4rem rgba(0, 0, 0, 0.2);
+    padding: 1rem 2.8rem 7rem 2.8rem;
+  }
+  .logged-user_container {
+    min-width: 30rem;
+    max-width: 50%;
+    max-height: 30%;
+    min-height: 25rem;
     z-index: 100;
     top: 0;
     right: 50%;
